@@ -16,7 +16,7 @@ const domStringBuilder = () => {
 const initializeLocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
-      const locationResults = resp.data.location;
+      const locationResults = resp.data.locations;
       locations = locationResults;
       domStringBuilder();
     })
