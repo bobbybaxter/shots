@@ -3,3 +3,14 @@
 body {
   background-color: grey;
 };
+
+#movies {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#locations {
+  display: flex;
+  flex-flow: row wrap;
+}
+

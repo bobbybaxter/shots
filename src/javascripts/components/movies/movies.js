@@ -8,7 +8,15 @@ let movies = [];
 const domStringBuilder = () => {
   let domString = '';
   movies.forEach((movie) => {
-    domString += `<h3>${movie.name}</h3>`;
+    domString += `<div id="${movie.id}"class="card movie col-4" style="width: 18rem;">`;
+    domString += '<div class="card-body">';
+    domString += `<h4 class="card-title">${movie.name}</h4>`;
+    domString += `<h5 class="card-subtitle text-muted">${movie.genre}</h5>`;
+    domString += `<p class="card-text text-muted">${movie.releaseDate}</p>`;
+    domString += `<p class="card-text">${movie.description}</p>`;
+    domString += `<p class="card-text"><small>${movie.locations.length} Locations</small></p>`;
+    domString += '</div>';
+    domString += '</div>';
   });
   util.printToDom('movies', domString);
 };
