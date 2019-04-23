@@ -15,7 +15,7 @@ const shootTimeClass = (shootTime) => {
       selectedClass = 'bg-success';
       break;
     case 'Evening':
-      selectedClass = 'bg-inf0';
+      selectedClass = 'bg-info';
       break;
     case 'After Dark':
       selectedClass = 'bg-danger';
@@ -26,9 +26,9 @@ const shootTimeClass = (shootTime) => {
   return selectedClass;
 };
 
-const domStringBuilder = () => {
+const domStringBuilder = (locArray) => {
   let domString = '';
-  locations.forEach((location) => {
+  locArray.forEach((location) => {
     domString += `<div id="${locations.id}"class="card location col-2" style="width: 18rem;">`;
     domString += `<h5 class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</h5>`;
     domString += '<div class="card-body">';
@@ -40,12 +40,41 @@ const domStringBuilder = () => {
   util.printToDom('locations', domString);
 };
 
+const filterButtonEvent = (e) => {
+  const buttonId = e.target.id;
+  const darkLocations = locations.filter(x => x.shootTime === 'After Dark');
+  const morningLocations = locations.filter(x => x.shootTime === 'Morning');
+  const afternoonLocations = locations.filter(x => x.shootTime === 'Afternoon');
+  const eveningLocations = locations.filter(x => x.shootTime === 'Evening');
+  switch (buttonId) {
+    case 'morning':
+      domStringBuilder(morningLocations);
+      break;
+    case 'afternoon':
+      domStringBuilder(afternoonLocations);
+      break;
+    case 'evening':
+      domStringBuilder(eveningLocations);
+      break;
+    case 'dark':
+      domStringBuilder(darkLocations);
+      break;
+    default:
+      domStringBuilder(locations);
+  }
+};
+
 const initializeLocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
       const locationResults = resp.data.locations;
       locations = locationResults;
-      domStringBuilder();
+      domStringBuilder(locations);
+      document.getElementById('dark').addEventListener('click', filterButtonEvent);
+      document.getElementById('afternoon').addEventListener('click', filterButtonEvent);
+      document.getElementById('evening').addEventListener('click', filterButtonEvent);
+      document.getElementById('morning').addEventListener('click', filterButtonEvent);
+      document.getElementById('all').addEventListener('click', filterButtonEvent);
     })
     .catch(err => console.error(err));
 };
