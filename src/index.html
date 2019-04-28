@@ -4,26 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
   <title>Shots</title>
 </head>
 <body>
-  <div id="app" class="container">
-    <h2>Movies:</h2>
-    <div id="movies"></div>
-    <h2>Locations:</h2>
-    <div id="filters">
-      <div class="row justify-content-center">
-        <input type="text" id="search-input" placeholder="Search Here!">
-      </div>
-      <div id="filter-buttons" class="row justify-content-center">
-        <button id="all" class="btn btn-outline-dark">All</button>
-        <button id="morning" class="btn btn-secondary">Morning</button>
-        <button id="afternoon" class="btn btn-success">Afternoon</button>
-        <button id="evening" class="btn btn-info">Evening</button>
-        <button id="dark" class="btn btn-danger">After Dark</button>
-      </div>
+  <div id="app" class="d-flex flex-column justify-content-center align-items-center my-2">
+    <h2 class="mast col-12 text-center p-2 mt-0 mb-2">Movies</h2>
+    <div class="container">
+      <div id="movies" class="d-flex flex-row flex-wrap col-12 ml-4"></div>
+        <div class="d-flex flex-row justify-content-center m-2 middle-bar">
+          <h2 class="mb-0 pr-2 mr-2 align-self-center">Locations</h2>
+          <div id="filters" class="d-flex flex-row align-items-center">
+            <input type="text" id="search-input" placeholder="Search Here!" class="mr-2 pr-2">
+            <div id="filter-buttons" class="m-2">
+              <button id="all" class="btn btn-outline-light">All</button>
+              <button id="morning" class="btn btn-secondary">Morning</button>
+              <button id="afternoon" class="btn btn-success">Afternoon</button>
+              <button id="evening" class="btn btn-info">Evening</button>
+              <button id="dark" class="btn btn-danger">After Dark</button>
+            </div>
+          </div>
+        </div>
+      <div id="locations" class="d-flex flex-wrap col-12 ml-4"></div>
     </div>
-    <div id="locations" class="d-flex flex-wrap"></div>
   </div>
 </body>
 </html>

@@ -29,11 +29,13 @@ const shootTimeClass = (shootTime) => {
 const domStringBuilder = (locArray) => {
   let domString = '';
   locArray.forEach((location) => {
-    domString += `<div id="${locations.id}"class="card location col-2" style="width: 18rem;">`;
-    domString += `<h5 class="card-header ${shootTimeClass(location.shootTime)}">${location.name}</h5>`;
-    domString += '<div class="card-body">';
-    domString += `<img src=${location.imageUrl} class="card-img-top">`;
-    domString += `<p class="card-text"><small>${location.address} Locations</small></p>`;
+    domString += `<div id="${location.id}" class="card d-flex flex-row locations col-4 p-0">`;
+    domString += `<div class="${shootTimeClass(location.shootTime)} col-2 p-0"></div>`;
+    domString += '<div class="d-flex flex-column p-0 m-0">';
+    domString += `<div class="card-body card-image" style="background-image:url(${location.imageUrl});">`;
+    domString += `<h5 class="card-header card-header-location">${location.name}</h5>`;
+    domString += `<p class="card-text card-body-location"><small>${location.address} Locations</small></p>`;
+    domString += '</div>';
     domString += '</div>';
     domString += '</div>';
   });
