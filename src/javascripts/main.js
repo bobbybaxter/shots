@@ -1,12 +1,11 @@
-import movies from './components/movies/movies';
-import locations from './components/locations/locations';
-// import eventListeners from './components/eventListeners';
-
 import '../styles/main.scss';
+import controller from './components/controller/controller';
+import eventListeners from './components/eventListeners';
 
 const init = () => {
-  movies.initializeMovies();
-  locations.initializeLocations();
+  controller.initializeMoviesOnLoad();
+  eventListeners.addClickHandlers();
+  eventListeners.addDeleteHandlers();
 };
 
 init();
